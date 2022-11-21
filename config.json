@@ -1,0 +1,9 @@
+{
+    "DATABASE":{
+        "host"    : "localhost",
+        "user"    : "root",
+        "password": "223322"
+    },
+    "DATA_DIR" 	  : "~/workspaces/",
+    "CYCLIC_INTERVAL": 60000
+}
