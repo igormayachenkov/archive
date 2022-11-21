@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/igormayachenkov/archive/issues"
   },
-  "homepage": "https://github.com/igormayachenkov/archive#readme"
+  "homepage": "https://github.com/igormayachenkov/archive#readme",
+  "dependencies": {
+    "fs-extra": "^10.1.0"
+  }
 }
