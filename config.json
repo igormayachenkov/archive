@@ -1,9 +1,12 @@
 {
-    "DATABASE":{
+    "database":{
         "host"    : "localhost",
         "user"    : "root",
         "password": "223322"
     },
+
+    "time" : "03:00",
+
     "sources"        : [
         "/etc/vim", 
         "/etc/eprotection",
