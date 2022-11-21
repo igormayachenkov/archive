@@ -1,0 +1,12 @@
+total 48
+-rw-r--r--  1 igor igor  448 Nov 21 18:54 config.js
+-rw-r--r--  1 igor igor  415 Nov 21 23:34 config.json
+-rw-r--r--  1 igor igor  739 Nov 22 00:00 databases.js
+-rw-r--r--  1 igor igor 1591 Nov 21 19:03 index.js
+-rw-r--r--  1 igor igor   91 Nov 21 12:50 logger.js
+-rw-r--r--  1 igor igor 1583 Nov 22 00:03 loop.js
+drwxrwxr-x 17 igor igor 4096 Nov 21 23:24 node_modules
+-rw-rw-r--  1 igor igor    0 Nov 22 00:03 out.txt
+-rw-rw-r--  1 igor igor  660 Nov 21 23:24 package.json
+-rw-rw-r--  1 igor igor 9916 Nov 21 23:24 package-lock.json
+-rw-r--r--  1 igor igor  101 Nov 21 18:55 README.md

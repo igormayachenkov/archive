@@ -1,8 +1,11 @@
 {
-    "database":{
-        "host"    : "localhost",
-        "user"    : "root",
-        "password": "223322"
+    "mysql":{
+        "connection":{
+            "host"    : "localhost",
+            "user"    : "root",
+            "password": "223322"
+        },
+        "dump_dir":"/home/igor/mysql_dump"
     },
 
     "time" : "03:00",
