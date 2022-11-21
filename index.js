@@ -38,7 +38,7 @@ async function loopWrapper(){
         await loop()      
         log('<<< LOOP FINISHED WITH SUCCESS :-) <<<')
     }catch(err){
-        console.log(err.toString())
+        console.log(`LOOP ERROR: ${err}`)
         log('<<< LOOP FINISHED WITH ERROR :-( <<<')
     }
 }
