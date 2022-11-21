@@ -59,7 +59,7 @@ const rsyncSrc = function(src){
 
 // mysqldump intrasite -u root -p > intrasite.sql
 const dumpDatabase = function(database,dir,connection){
-    log(`dump database: ${database}`)
+    log(`dump db: ${database}`)
 
     let path = dir + (dir.endsWith('/')?'':'/') + database + '.sql'
     const out = fs.openSync(path, 'w');
