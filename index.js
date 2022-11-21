@@ -2,19 +2,20 @@ import {log} from "./logger.js"
 import {config, loadConfig} from "./config.js"
 import {loop} from "./loop.js"
 
-const LOOP_INTERVAL = 2000
+const LOOP_INTERVAL = 60000000
 
 console.log('------------------------------------------------------------------------')
 console.log('|                           ARCHIVE-SYSTEM                             |')
 
 async function loopWrapper(){
-    log('LOOP STARTED')
+    log('>>> LOOP STARTED >>>')
     try{
-        await loop()        
+        await loop()      
+        log('<<< LOOP FINISHED WITH SUCCESS :-) <<<')
     }catch(err){
-        log(err)
+        console.log(err.toString())
+        log('<<< LOOP FINISHED WITH ERROR :-( <<<')
     }
-    log('LOOP FINISHED')
 }
 
 async function main(){

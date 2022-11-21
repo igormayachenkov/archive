@@ -4,6 +4,11 @@
         "user"    : "root",
         "password": "223322"
     },
-    "DATA_DIR" 	  : "~/workspaces/",
-    "CYCLIC_INTERVAL": 60000
+    "sources"        : [
+        "/etc/vim", 
+        "/etc/eprotection",
+        "/home/igor/workspaces/Kolmarden"
+    ],
+    "destination"    : 
+        "igor@192.168.1.68:BACKUP/test"
 }
