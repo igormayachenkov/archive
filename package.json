@@ -1,7 +1,7 @@
 {
-  "name": "archive",
+  "name": "nunnu",
   "version": "1.0.0",
-  "description": "A simple backup script for folder+database backup",
+  "description": "Another backup scheduler for Node+PM2 lovers",
   "main": "index.js",
   "type": "module",
   "scripts": {

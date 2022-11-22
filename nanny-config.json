@@ -1,0 +1,29 @@
+{
+    "schedule":{
+        "time" : "04:00"
+    },
+
+    "sources"        : [
+        "/etc/nunny-config.json", 
+        "/etc/mysql"
+    ],
+    
+    "destination"    : 
+        "igor@192.168.1.68:BACKUP/test",
+
+    "mysql":{
+        "connection":{
+            "host"    : "localhost",
+            "user"    : "root",
+            "password": "223322"
+        },
+        "include"     : ["test"],
+        "exclude"     : [
+            "mysql",
+            "sys",
+            "information_schema", 
+            "performance_schema"
+        ],
+        "dump_dir":"/home/igor/mysql_dump"
+    }
+}
