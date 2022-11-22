@@ -12,6 +12,16 @@ Used software (must be installed)
 - `mysqldump` for MySQL database content archivation
 - `pm2` for keeping the application online
 
+Config rsync 
+-------------
+rsync must access the `destination` without password input. For ssh access to remote server make the next steps:
+- copy your ssh keys to the backup server (generate them before if need)
+    > ssh-copy-id root@62.109.20.94
+- create a special user with the appropriate homedir and without sudo permissions
+    > useradd -m -d /var/backup/user-homedir user    
+    passwd user
+
+
 Installation
 ----------------
 - download the code from github
@@ -39,3 +49,8 @@ Configuration file format
 |   `.exclude`  [optional]  | databases to exclude from the process (after include filter run)|
 |   `.dump_dir`             | the local dir to store the dumps temporary                    |
 
+TODO
+======
+- zip dump files before sync
+- log transferred data volume
+- append the server status API
