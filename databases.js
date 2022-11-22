@@ -1,12 +1,5 @@
 import mysql from "mysql"
 
-const SYSTEM_DATABASES = new Set([
-    'mysql',
-    'sys',
-    'information_schema', 
-    'performance_schema']);
-
-
 export const getDatabaseList = async function(options){
     let conn = mysql.createConnection(options)
     conn.connect()
@@ -15,7 +8,6 @@ export const getDatabaseList = async function(options){
 
     return rows
         .map(row=>row.Database)
-        .filter(db=>!SYSTEM_DATABASES.has(db))
 }
 
 // MySQL connection.query wrapped in Promise

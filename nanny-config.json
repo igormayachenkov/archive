@@ -4,8 +4,7 @@
     },
 
     "sources"        : [
-        "/etc/nunny-config.json", 
-        "/etc/mysql"
+        "/etc/nanny-config.json"
     ],
     
     "destination"    : 

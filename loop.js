@@ -5,20 +5,25 @@ import fs from "fs-extra"
 import { getDatabaseList } from "./databases.js"
 
 export async function loop(){
-    // ARCHIVE FILES
+    // ARCHIVE FILES/DIRS
     for(const src of config.sources){
         rsyncSrc(src)
     }
 
     // ARHIVE DATABASES
     if(config.mysql){
-        const {dump_dir,connection} = config.mysql
+        const {connection,include,exclude,dump_dir} = config.mysql
         // Prepare dir
         if(!dump_dir) throw "config.mysql.dump_dir is not defined"
         await fs.ensureDirSync(dump_dir)
         await fs.emptyDirSync(dump_dir)
         // Get database list
-        const databases = await getDatabaseList(connection)
+        let databases = include? include : await getDatabaseList(connection)
+        if(exclude){
+            let set = new Set(exclude)
+            databases = databases.filter(db=>!set.has(db))
+        }
+
         // Database
         for(const db of databases){
             dumpDatabase(db, dump_dir, connection)
@@ -28,9 +33,12 @@ export async function loop(){
         if(dir.endsWith('/')) dir=dir.substring(0,dir.length-1)
         rsyncSrc(dir)
 
+        // Clear dumps
+        await fs.emptyDirSync(dump_dir)
     }
 }
 
+// RUN rsync
 const rsyncSrc = function(src){
     log(`archive: ${src}`)
 
@@ -57,8 +65,9 @@ const rsyncSrc = function(src){
     if(child.status!=0) throw child.stderr
 }
 
-// mysqldump intrasite -u root -p > intrasite.sql
-const dumpDatabase = function(database,dir,connection){
+// RUN mysqldump
+// https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html
+const dumpDatabase = function(database, dir, connection){
     log(`dump db: ${database}`)
 
     let path = dir + (dir.endsWith('/')?'':'/') + database + '.sql'
@@ -67,7 +76,8 @@ const dumpDatabase = function(database,dir,connection){
     let child = spawnSync(
         'mysqldump',
         // arguments
-        ['-u',  connection.user,
+        [`--password=${connection.host}`,
+        `--user=${connection.user}`,
         `--password=${connection.password}`,
         database],
         // options

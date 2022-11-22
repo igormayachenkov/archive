@@ -15,27 +15,27 @@ Used software (must be installed)
 Installation
 ----------------
 - download the code from github
-    > git clone git@github.com:igormayachenkov/nunny.git
+    > git clone git@github.com:igormayachenkov/nanny.git
 - install node modules
-    > cd nunny    
+    > cd nanny    
     npm install
 - copy the configuration file to `/etc` dir and correct it according to you tasks
-    > cp nunny-config.json /etc   
-    nano /etc/nunny-config.json
+    > cp nanny-config.json /etc   
+    nano /etc/nanny-config.json
 - start under PM2 management
-    > pm2 start index.js --name nunny
+    > pm2 start index.js --name nanny
 
 Configuration file format
 --------------------------
 | Parameter                 | Description                                                   |
 | :---------------          |:-----------------------------------------------------------   |
 | `schedule`                | periodic work settings. Olny daily mode is implemented now    |
-|   `.time`                 | the work will be performet at this time                       |
+|   `.time`  [optional]     | the work will be performet at this time                       |
 | `sources`                 | list of `rsync SRC` (files or dirs)                           |
 | `destination`             | `rsync DEST` - the backup dir                                 |
-| `database` [optional]     |  schedules the database backup if present                     |
+| `mysql` [optional]        | schedules the MySQL database backup if present                |
 |   `.connection`           | the database connection credentials                           |
 |   `.include`  [optional]  | databases to include in the process, all if not present       |
 |   `.exclude`  [optional]  | databases to exclude from the process (after include filter run)|
-|   `.dump_dir`             | the local dir to store the dumps                              |
+|   `.dump_dir`             | the local dir to store the dumps temporary                    |
 
